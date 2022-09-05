@@ -1,10 +1,17 @@
 package site.telion;
 
-public class Bicycle {
-    public String modelName;
-    public int wheelCount;
+public class Bicycle extends Transport implements withTyres {
 
-    public void updateTyre() {
-        System.out.println("Меняем покрышку");
+    public Bicycle(String modelName, int wheelCount) {
+        super(modelName, wheelCount);
     }
+
+    @Override
+    public void check() {
+        System.out.println("Обслуживаем " + getModelName());
+        for (int i = 0; i < getWheelCount(); i++) {
+            updateTyre();
+        }
+    }
+
 }

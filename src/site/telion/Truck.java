@@ -1,18 +1,23 @@
 package site.telion;
 
-public class Truck {
-    public String modelName;
-    public int wheelsCount;
+public class Truck extends Transport implements withTyres, withEngine {
 
-    public void updateTyre() {
-        System.out.println("Меняем покрышку");
-    }
-
-    public void checkEngine() {
-        System.out.println("Проверяем двигатель");
+    public Truck(String modelName, int wheelsCount) {
+        super(modelName, wheelsCount);
     }
 
     public void checkTrailer() {
         System.out.println("Проверяем прицеп");
     }
+
+    @Override
+    public void check() {
+        System.out.println("Обслуживаем " + getModelName());
+        for (int i = 0; i < getWheelCount(); i++) {
+            updateTyre();
+        }
+        checkEngine();
+        checkTrailer();
+    }
+
 }
